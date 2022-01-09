@@ -9,22 +9,21 @@
 package main
 
 // ---------------------------------------------------------
-// EXERCISE: Only Evens
+// EXERCISE: Verbose Mode
 //
-//  1. Extend the "Sum up to N" exercise
-//  2. Sum only the even numbers
+//  When the player runs the game like this:
 //
-// RESTRICTIONS
-//  Skip odd numbers using the `continue` statement
+//    go run main.go -v 4
 //
-// EXPECTED OUTPUT
-//  Let's suppose that the user runs it like this:
+//  Display each generated random number:
+
+//    1 3 4 🎉  YOU WIN!
 //
-//    go run main.go 1 10
+//  In this example, computer picks 1, 3, and 4. And the
+//  player wins.
 //
-//  Then it should print:
-//
-//    2 + 4 + 6 + 8 + 10 = 30
+// HINT
+//  You need to get and interpret the command-line arguments.
 // ---------------------------------------------------------
 
 func main() {

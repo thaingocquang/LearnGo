@@ -9,22 +9,17 @@
 package main
 
 // ---------------------------------------------------------
-// EXERCISE: Only Evens
+// EXERCISE: Double Guesses
 //
-//  1. Extend the "Sum up to N" exercise
-//  2. Sum only the even numbers
+//  Let the player guess two numbers instead of one.
 //
-// RESTRICTIONS
-//  Skip odd numbers using the `continue` statement
+// HINT:
+//  Generate random numbers using the greatest number
+//  among the guessed numbers.
 //
-// EXPECTED OUTPUT
-//  Let's suppose that the user runs it like this:
-//
-//    go run main.go 1 10
-//
-//  Then it should print:
-//
-//    2 + 4 + 6 + 8 + 10 = 30
+// EXAMPLES
+//  go run main.go 5 6
+//  Player wins if the random number is either 5 or 6.
 // ---------------------------------------------------------
 
 func main() {

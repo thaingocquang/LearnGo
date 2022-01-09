@@ -9,22 +9,20 @@
 package main
 
 // ---------------------------------------------------------
-// EXERCISE: Only Evens
+// EXERCISE: First Turn Winner
 //
-//  1. Extend the "Sum up to N" exercise
-//  2. Sum only the even numbers
+//  If the player wins on the first turn, then display
+//  a special bonus message.
 //
-// RESTRICTIONS
-//  Skip odd numbers using the `continue` statement
+// RESTRICTION
+//  The first picked random number by the computer should
+//  match the player's guess.
 //
-// EXPECTED OUTPUT
-//  Let's suppose that the user runs it like this:
-//
-//    go run main.go 1 10
-//
-//  Then it should print:
-//
-//    2 + 4 + 6 + 8 + 10 = 30
+// EXAMPLE SCENARIO
+//  1. The player guesses 6
+//  2. The computer picks a random number and it happens
+//     to be 6
+//  3. Terminate the game and print the bonus message
 // ---------------------------------------------------------
 
 func main() {

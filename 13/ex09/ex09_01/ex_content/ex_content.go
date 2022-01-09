@@ -9,22 +9,19 @@
 package main
 
 // ---------------------------------------------------------
-// EXERCISE: Only Evens
+// EXERCISE: Case Insensitive Search
 //
-//  1. Extend the "Sum up to N" exercise
-//  2. Sum only the even numbers
+//  Allow for case-insensitive searching
 //
-// RESTRICTIONS
-//  Skip odd numbers using the `continue` statement
+// EXAMPLE
+//  Let's say that the user runs the program like this:
+//    go run main.go LAZY
 //
-// EXPECTED OUTPUT
-//  Let's suppose that the user runs it like this:
+//  Or like this: go run main.go lAzY
+//  Or like this: go run main.go lazy
 //
-//    go run main.go 1 10
-//
-//  Then it should print:
-//
-//    2 + 4 + 6 + 8 + 10 = 30
+//  For all cases above, the program should find
+//  the "lazy" keyword.
 // ---------------------------------------------------------
 
 func main() {
