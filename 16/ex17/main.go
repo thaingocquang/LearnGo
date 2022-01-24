@@ -1,20 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
-	mySt := st("quang")
-	var intf I = &mySt
-	intf.log("thaingocquang")
-}
+	items := []string{
+		"pacman", "mario", "tetris", "doom", "galaga", "frogger",
+		"asteroids", "simcity", "metroid", "defender", "rayman",
+		"tempest", "ultima",
+	}
 
-type I interface {
-	log(string) bool
-}
+	fmt.Println("Original:", items)
+	mid := len(items) / 2
+	// fmt.Println(items[mid : mid+3])
+	sort.Strings(items[mid-1 : mid+2])
 
-type st string
-
-func (s *st) log(string) bool {
-	fmt.Println(*s)
-	return true
+	fmt.Println()
+	fmt.Println("Sorted  :", items)
 }

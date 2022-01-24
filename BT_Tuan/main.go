@@ -125,10 +125,10 @@ func FindFinalWinnerInWinner(winner []int, players []Player, res []int) {
 					diemChat1 := players[winner[i]].cards[j].point
 					diemChat2 := maxCard.maxC.point
 					if diemChat1 == 1 {
-						diemChat1 += 13
+						diemChat1 += 15
 					}
 					if diemChat2 == 1 {
-						diemChat2 += 13
+						diemChat2 += 15
 					}
 					if diemChat1 >= diemChat2 {
 						maxCard = MaxCard{winner[i], players[winner[i]].cards[j]}

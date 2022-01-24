@@ -1,0 +1,3 @@
+- run
+    + for window: go run .
+    + for linux: go run *.go
