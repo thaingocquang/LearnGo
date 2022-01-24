@@ -12,6 +12,7 @@ type ListPlayers struct {
 	listPlayers []Player
 }
 
+// hien thi bai nguoi choi va ket qua
 func (lp ListPlayers) DisplayCards() {
 	rankName := []string{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
 	suitName := []string{"cơ", "rô", "chuồn", "bích"}
@@ -71,6 +72,7 @@ func (lp ListPlayers) DisplayCards() {
 	fmt.Println()
 }
 
+// init player, chia bai, tinh kq
 func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard) {
 	lp.listPlayers = make([]Player, 0)
 	var cardInx = 0
