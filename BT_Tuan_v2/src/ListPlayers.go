@@ -15,7 +15,6 @@ type ListPlayers struct {
 func (lp ListPlayers) DisplayCards() {
 	rankName := []string{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
 	suitName := []string{"cơ", "rô", "chuồn", "bích"}
-
 	fmt.Print("\033[H\033[2J")
 	nPlayers := len(lp.listPlayers)
 	for i := 1; i <= nPlayers; i++ {
@@ -69,6 +68,7 @@ func (lp ListPlayers) DisplayCards() {
 			}
 		}
 	}
+	fmt.Println()
 }
 
 func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard) {
@@ -81,11 +81,13 @@ func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard) {
 		player.highCard = Card{5, 5}
 		for j := 0; j < 3; j++ {
 			player.cards[j] = shuffledDeckCard.deckCard[cardInx]
+			// Tinh diem sumCard cho player
 			if player.cards[j].rank >= 10 {
 				player.sumCards += 0
 			} else {
 				player.sumCards += player.cards[j].rank
 			}
+			// Tim highCard cho player
 			if player.cards[j].IsHigher(player.highCard) {
 				player.highCard = player.cards[j]
 			}
@@ -97,13 +99,16 @@ func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard) {
 }
 
 func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player) {
+	// copy ra list player moi
 	var lp ListPlayers
 	lp.listPlayers = make([]Player, len(lpp.listPlayers))
 	copy(lp.listPlayers, lpp.listPlayers)
+
 	// sort list players theo diem
 	sort.Slice(lp.listPlayers, func(i, j int) bool {
 		return lp.listPlayers[i].sumCards > lp.listPlayers[j].sumCards
 	})
+	// tim slice player co diem cao nhat bang nhau
 	k := 0
 	for i := 1; i < len(lp.listPlayers); i++ {
 		if lp.listPlayers[i].sumCards != lp.listPlayers[0].sumCards {

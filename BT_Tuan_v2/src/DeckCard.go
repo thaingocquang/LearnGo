@@ -20,6 +20,8 @@ func (dc *DeckCard) init() {
 		}
 	}
 }
+
+// xao bai
 func (dc *DeckCard) Shuffle() {
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(dc.deckCard), func(i, j int) { dc.deckCard[i], dc.deckCard[j] = dc.deckCard[j], dc.deckCard[i] })
