@@ -28,4 +28,4 @@ CHƠI BÀI ĐIỂM:
     + type ListPlayers struct
     + func (lp ListPlayers) DisplayCards(): Hiển thị bài người chơi và kết quả
     + func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard): khởi tạo list players, chia bài cho players, tính kq 
-    + func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player): tìm người chiến thắng
+    + func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player): tìm người chiến thắng 
