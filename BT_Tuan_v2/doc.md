@@ -28,3 +28,4 @@ CHƠI BÀI ĐIỂM:
     + type ListPlayers struct
     + func (lp ListPlayers) DisplayCards()
     + func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard)
+    + func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player)
