@@ -17,15 +17,15 @@ CHƠI BÀI ĐIỂM:
 # Project structure
 - Card.go
     + type Card struct
-    + func (c Card) IsHigher(c2 Card) bool
+    + func (c Card) IsHigher(c2 Card) bool: so sánh chất 2 cây bài
 - DeckCard.go
     + type DeckCard struct
-    + func (dc *DeckCard) init()
-    + func (dc *DeckCard) Shuffle()
+    + func (dc *DeckCard) init(): khởi tạo bộ bài
+    + func (dc *DeckCard) Shuffle(): xáo bài
 - Player.go
     + type Player struct
 - ListPlayers.go
     + type ListPlayers struct
-    + func (lp ListPlayers) DisplayCards()
-    + func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard)
-    + func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player)
+    + func (lp ListPlayers) DisplayCards(): Hiển thị bài người chơi và kết quả
+    + func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard): khởi tạo list players
+    + func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player): tìm người chiến thắng

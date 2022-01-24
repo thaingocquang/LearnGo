@@ -13,7 +13,7 @@ func main() {
 	// init bo bai
 	deckCard.init()
 	for {
-		fmt.Print("Nhap so nguoi choi:(2<n<17) ")
+		fmt.Print("Nhap so nguoi choi:(2<=n<=17) ")
 		fmt.Scanln(&nPlayers)
 		// xao bai
 		deckCard.Shuffle()
