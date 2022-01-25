@@ -8,31 +8,37 @@ import (
 	"github.com/atomicgo/cursor"
 )
 
+// number of cards player have
+const threeCard = 3
+
+// rank, suit name array for display card
+var (
+	rankName = []string{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
+	suitName = []string{"cơ", "rô", "chuồn", "bích"}
+)
+
+// ListPlayers...
 type ListPlayers struct {
 	listPlayers []Player
 }
 
 // hien thi bai nguoi choi va ket qua
 func (lp ListPlayers) DisplayCards() {
-	rankName := []string{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
-	suitName := []string{"cơ", "rô", "chuồn", "bích"}
 	fmt.Print("\033[H\033[2J")
-	nPlayers := len(lp.listPlayers)
-	for i := 1; i <= nPlayers; i++ {
+	totalPlayers := len(lp.listPlayers)
+	for i := 1; i <= totalPlayers; i++ {
 		fmt.Println("Player", i, ":")
 	}
 
 	for k := 0; k < 3; k++ {
-		cursor.Up(nPlayers)
+		cursor.Up(totalPlayers)
 		if k == 0 {
 			cursor.Right((k + 1) * 15)
 		} else {
 			cursor.Right(20)
 		}
-		for i := 0; i < nPlayers; i++ {
-
+		for i := 0; i < totalPlayers; i++ {
 			fmt.Printf("%2s%6s", rankName[lp.listPlayers[i].cards[k].rank-1], suitName[lp.listPlayers[i].cards[k].suit-1])
-
 			time.Sleep(time.Millisecond * 10)
 			cursor.Down(1)
 			cursor.Left(8)
@@ -73,33 +79,28 @@ func (lp ListPlayers) DisplayCards() {
 }
 
 // init player, chia bai, tinh kq
-func (lp *ListPlayers) init(nPlayers int, shuffledDeckCard DeckCard) {
+func (lp *ListPlayers) init(totalPlayers int, shuffledDeckCard DeckCard) {
 	lp.listPlayers = make([]Player, 0)
 	var cardInx = 0
-	for i := 1; i <= nPlayers; i++ {
-		var player Player
-		player.id = i
-		player.cards = make([]Card, 3)
-		player.highCard = Card{5, 5}
-		for j := 0; j < 3; j++ {
-			player.cards[j] = shuffledDeckCard.deckCard[cardInx]
-			// Tinh diem sumCard cho player
-			if player.cards[j].rank >= 10 {
-				player.sumCards += 0
-			} else {
-				player.sumCards += player.cards[j].rank
-			}
-			// Tim highCard cho player
-			if player.cards[j].IsHigher(player.highCard) {
-				player.highCard = player.cards[j]
-			}
+	for i := 1; i <= totalPlayers; i++ {
+		player := Player{
+			id:       i,
+			cards:    make([]Card, threeCard),
+			sumCards: 0,
+			highCard: Card{0, 0, 0},
+		}
+		for j := 0; j < threeCard; j++ {
+			card := shuffledDeckCard.deckCard[cardInx]
+			player.cards[j] = card
 			cardInx++
 		}
-		player.sumCards %= 10
+		player.CalculateSumCards()
+		player.CalculateHighCard()
 		lp.listPlayers = append(lp.listPlayers, player)
 	}
 }
 
+// FindWinner find the player has highest score and suit
 func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player) {
 	// copy ra list player moi
 	var lp ListPlayers
@@ -121,7 +122,7 @@ func (lpp ListPlayers) FindWinner() (winner Player, equalRank []Player) {
 	if k == 0 {
 		return lp.listPlayers[0], nil
 	} else {
-		//sort list players theo suit
+		//sort list players
 		sort.Slice(lp.listPlayers[0:k+1], func(i, j int) bool {
 			return lp.listPlayers[i].highCard.IsHigher(lp.listPlayers[j].highCard)
 		})

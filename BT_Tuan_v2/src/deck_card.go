@@ -5,18 +5,22 @@ import (
 	"time"
 )
 
-const nSuit = 4
-const nCard1Suit = 13
+// ...
+const totalSuit = 4
+const cardSuit = 13
 
+// DeckCard...
 type DeckCard struct {
 	deckCard []Card
 }
 
+// initial deck card
 func (dc *DeckCard) init() {
 	dc.deckCard = make([]Card, 0)
-	for i := 1; i <= nSuit; i++ {
-		for j := 1; j <= nCard1Suit; j++ {
-			dc.deckCard = append(dc.deckCard, Card{j, i})
+	for i := 1; i <= totalSuit; i++ {
+		dc.deckCard = append(dc.deckCard, Card{1, 14, i})
+		for j := 2; j <= cardSuit; j++ {
+			dc.deckCard = append(dc.deckCard, Card{j, j, i})
 		}
 	}
 }

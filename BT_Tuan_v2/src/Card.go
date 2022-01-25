@@ -1,31 +1,23 @@
 package main
 
+// Card...
 type Card struct {
-	rank int
-	suit int // co, ro, chuon, bich
+	rank     int
+	realRank int
+	suit     int // co, ro, chuon, bich
 }
 
-// so sanh suit 2 card
+// so sanh 2 card
 func (c Card) IsHigher(c2 Card) bool {
-	if c.suit < c2.suit {
+	if c.realRank > c2.realRank {
 		return true
-	} else if c.suit > c2.suit {
+	} else if c.realRank < c2.realRank {
 		return false
-	} else if c.suit == c2.suit {
-		// truong hop trung con A
-		realRank1 := c.rank
-		realRank2 := c2.rank
-		if realRank1 == 1 {
-			realRank1 += 99
-		} else if realRank2 == 1 {
-			realRank2 += 99
-		}
-		if realRank1 > realRank2 {
+	} else {
+		if c.suit < c2.suit {
 			return true
 		} else {
 			return false
 		}
-	} else {
-		return false
 	}
 }
