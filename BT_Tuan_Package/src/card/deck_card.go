@@ -14,11 +14,11 @@ type DeckCard struct {
 	DeckCard []Card
 }
 
-// initial deck card
+// Init khoi tao deck card
 func (dc *DeckCard) Init() {
 	dc.DeckCard = make([]Card, 0)
 	for i := 1; i <= totalSuit; i++ {
-		dc.DeckCard = append(dc.DeckCard, Card{1, 14, i})
+		dc.DeckCard = append(dc.DeckCard, Card{1, 99, i}) // khoi tao con xi co rank 1 va real rank 99
 		for j := 2; j <= cardSuit; j++ {
 			dc.DeckCard = append(dc.DeckCard, Card{j, j, i})
 		}
