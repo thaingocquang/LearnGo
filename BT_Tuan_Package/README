@@ -1,0 +1,3 @@
+- run
+    + for window: go run src/main.go
+    + for linux: go run src/main.go
